@@ -1,3 +1,7 @@
+# Figma design
+
+https://www.figma.com/community/file/1075772455388559652
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
