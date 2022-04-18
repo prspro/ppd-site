@@ -1,22 +1,31 @@
 import './app.sass';
 import React from 'react';
-import { CssBaseline, Container } from '@material-ui/core';
+import Logo from "./components/Logo/Logo";
+import SidebarMenu from './components/SidebarMenu/SidebarMenu';
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-    <div className="app">
-      <CssBaseline />
-      <div className="app__col app__col--nav">
-        <Container maxWidth="sm">
-          test
-        </Container>
+    <BrowserRouter>
+      <div className="app">
+        <div className="app__col app__col--nav">
+          <Logo />
+          <SidebarMenu />
+        </div>
+        <div className="app__col app__col--main">
+          <Routes>
+            <Route
+              path="/"
+              element={"route1"}
+            />
+            <Route
+              path="/ppd-assistance"
+              element={"route2"}
+            />
+          </Routes>
+        </div>
       </div>
-      <div className="app__col app__col--main">
-        <Container maxWidth="lg">
-          test
-        </Container>
-      </div>
-    </div>
+    </BrowserRouter>
   );
 }
 
