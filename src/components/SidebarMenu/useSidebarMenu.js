@@ -25,8 +25,8 @@ const navList = [
     icon: "eye2"
   },
   {
-    link: "/tariff -plan",
-    anchor: "Tariff  Plan",
+    link: "/tariff-plan",
+    anchor: "Tariff Plan",
     icon: "label"
   },
 ]

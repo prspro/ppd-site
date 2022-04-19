@@ -1,4 +1,5 @@
 .sidebar-menu
+    $rootParent: &
     &__item
         margin-bottom: 20px
         &:last-of-type
@@ -9,5 +10,13 @@
         line-height: 1.59
         transition: all .3s
         text-decoration: none
+        display: flex
+        align-items: center
         &.active, &:hover
             color: #2289FF
+        &:hover #{$rootParent}__icon, &.active #{$rootParent}__icon
+            fill: #2289FF
+    &__icon
+        height: 24px
+        width: 24px
+        margin-right: 27px
