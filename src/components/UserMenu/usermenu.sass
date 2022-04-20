@@ -1,0 +1,29 @@
+.user-menu
+    display: flex
+    align-items: center
+    cursor: pointer
+    &__icon
+        width: 19px
+        height: 23px
+        transition: all .3s
+        margin-right: 11px
+    &__name
+        color: #a6a6a6
+        font-size: 22px
+        transition: all .3s
+    &__arrow
+        width: 10px
+        height: 10px
+        border-top: 2px solid #a6a6a6
+        border-right: 2px solid #a6a6a6
+        transition: all .3s
+        transform: rotate(135deg)
+        margin-left: 10px
+    &:hover &__icon
+        fill: #2289FF
+        stroke: #2289FF
+    &:hover &__name
+        color: #2289FF
+    &:hover &__arrow
+        border-top: 2px solid #2289FF
+        border-right: 2px solid #2289FF

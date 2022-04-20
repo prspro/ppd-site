@@ -1,0 +1,62 @@
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 950px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container {
+    width: 1140px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .container {
+    width: 1380px;
+  }
+}
+
+.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+@media screen and (max-width: 991px) {
+  .row {
+    margin: 0;
+  }
+  .container {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
+
+.container-fluid::after,
+.container-fluid::before,
+.container::after,
+.container::before,
+.row::after,
+.row::before {
+  content: "";
+  display: table;
+  clear: both;
+}

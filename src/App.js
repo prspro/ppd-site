@@ -3,6 +3,7 @@ import React from 'react';
 import Logo from "./components/Logo/Logo";
 import SidebarMenu from './components/SidebarMenu/SidebarMenu';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
+import Header from './components/Header/Header';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <SidebarMenu />
         </div>
         <div className="app__col app__col--main">
+          <Header />
           <Routes>
             <Route
               path="/"

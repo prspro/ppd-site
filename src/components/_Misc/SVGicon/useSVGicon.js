@@ -1,9 +1,7 @@
-const Usesvgicon = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+const useSVGicon = () => {
+    return {
+        
+    };
 }
 
-export default Usesvgicon;
+export default useSVGicon;

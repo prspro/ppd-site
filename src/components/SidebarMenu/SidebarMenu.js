@@ -2,6 +2,7 @@ import "./sidebarMenu.sass";
 import { NavLink } from "react-router-dom";
 import useSidebarMenu from "./useSidebarMenu";
 import SVGicon from "../_Misc/SVGicon/SVGicon.js";
+import classNames from "classnames";
 
 const SidebarMenu = () => {
   const { navList } = useSidebarMenu();
@@ -14,7 +15,7 @@ const SidebarMenu = () => {
       {navList.map((entry, idx) => {
         return (
           <li key={idx} className="sidebar-menu__item">
-            <NavLink className="sidebar-menu__link" activeClassName="active" to={entry.link}>
+            <NavLink className={(navData) => (navData.isActive ? "sidebar-menu__link active" : "sidebar-menu__link")} to={entry.link}>
               <SVGicon classes={iconClassList} id={entry.icon} />
               <p>{entry.anchor}</p>
             </NavLink>
