@@ -4,7 +4,7 @@ import sprite from "../../../img/sprite.svg";
 import classNames from "classnames";
 
 const SVGicon = ({ classes, id }) => {
-  const iconClassList = classes.join(" ");
+  const { iconClassList } = useSVGicon(classes);
 
   return (
     <svg className={classNames("svg-icon", id, iconClassList)}>
