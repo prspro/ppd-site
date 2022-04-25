@@ -13,7 +13,7 @@ const SummaryCard = ({title, number, icon}) => {
                 <span className="summary-card__number">
                     {number}
                 </span>
-                <SVGicon classes={"summary-card__icon"} id={icon} />
+                <SVGicon className={"summary-card__icon"} id={icon} />
             </div>
         </div>
     );

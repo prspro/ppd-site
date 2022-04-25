@@ -6,6 +6,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Header from './components/Header/Header';
 import Container from './components/_Misc/Container/Container';
 import Summary from './components/Summary/Summary';
+import DataList from './components/DataList/DataList';
 
 function App() {
   return (
@@ -21,7 +22,12 @@ function App() {
             <Routes>
               <Route
                 path="/"
-                element={<Summary />}
+                element={
+                  <React.Fragment>
+                    <Summary />
+                    <DataList />
+                  </React.Fragment>
+                }
               />
               <Route
                 path="/ppd-assistance"

@@ -1,0 +1,36 @@
+.btn
+    $rootParent: &
+    $btnHeight: 64px
+    height: $btnHeight
+    // line-height: 64px
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 5px 23px
+    border-radius: $btnHeight / 2
+    cursor: pointer
+    box-shadow: 0px 3px 15px 0px rgb(0 0 0 / 23%)
+    font-weight: 600
+    &:hover #{$rootParent}__plus
+            transform: rotate(180deg) scale(1.2)
+    &--primary
+        color: #fff
+        background-color: #3485F7
+    &__plus
+        height: 14px
+        width: 14px
+        position: relative
+        margin-right: 9px
+        transform: none
+        transition: all .5s
+        &::before, &::after
+            content: ''
+            position: absolute
+            width: 2px
+            height: 100%
+            background-color: #fff
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+        &::after
+            transform: translate(-50%, -50%) rotate(90deg)

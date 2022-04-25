@@ -6,9 +6,6 @@ import classNames from "classnames";
 
 const SidebarMenu = () => {
   const { navList } = useSidebarMenu();
-  const iconClassList = [
-    "sidebar-menu__icon"
-  ];
 
   return (
     <ul className="sidebar-menu">
@@ -16,7 +13,7 @@ const SidebarMenu = () => {
         return (
           <li key={idx} className="sidebar-menu__item">
             <NavLink className={(navData) => (navData.isActive ? "sidebar-menu__link active" : "sidebar-menu__link")} to={entry.link}>
-              <SVGicon classes={iconClassList} id={entry.icon} />
+              <SVGicon className="sidebar-menu__icon" id={entry.icon} />
               <p>{entry.anchor}</p>
             </NavLink>
           </li>

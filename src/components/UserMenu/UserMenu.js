@@ -10,7 +10,7 @@ const iconClassList = [
 const UserMenu = ({classes}) => {
     return (
         <div className={classNames("user-menu", classes)}>
-            <SVGicon classes={iconClassList} id={"person"}/>
+            <SVGicon className={iconClassList} id={"person"}/>
             <p className="user-menu__name">
                 Joe Melton
             </p>
