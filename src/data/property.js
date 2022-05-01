@@ -1,0 +1,42 @@
+export const propertyList = [
+    {
+        id: "PPD1125",
+        image: "",
+        propertyType: "Plot",
+        contact: "97852 52525",
+        area: "1200",
+        views: 2,
+        status: "sold",
+        date: "",
+    },
+    {
+        id: "PPD1202",
+        image: "",
+        propertyType: "House",
+        contact: "97852 52525",
+        area: "2500",
+        views: 2,
+        status: "unsold",
+        date: "",
+    },
+    {
+        id: "PPD1235",
+        image: "",
+        propertyType: "House",
+        contact: "97852 52525",
+        area: "1800",
+        views: 2,
+        status: "unsold",
+        date: "",
+    },
+    {
+        id: "PPD1311",
+        image: "",
+        propertyType: "Flat",
+        contact: "97852 52525",
+        area: "2000",
+        views: 2,
+        status: "sold",
+        date: "",
+    }
+];

@@ -1,8 +1,12 @@
 import React from "react";
-import useDataTable from "../DataList/useDataList";
+import useDataTable from "../DataTable/useDataTable";
 import "./datatable.sass";
+import SVGicon from "../_Misc/SVGicon/SVGicon";
+import classNames from "classnames";
 
 const DataTable = () => {
+  const { dataList } = useDataTable();
+
   return (
     <table className="data-table">
       <thead>
@@ -19,61 +23,38 @@ const DataTable = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>PPD1125</td>
-          <td>____</td>
-          <td>Plot</td>
-          <td>97852 52525</td>
-          <td>1200</td>
-          <td>02</td>
-          <td>Sold</td>
-          <td>00</td>
-          <td>____</td>
-        </tr>
-        <tr>
-          <td>PPD1125</td>
-          <td>____</td>
-          <td>Plot</td>
-          <td>97852 52525</td>
-          <td>1200</td>
-          <td>02</td>
-          <td>Sold</td>
-          <td>00</td>
-          <td>____</td>
-        </tr>
-        <tr>
-          <td>PPD1125</td>
-          <td>____</td>
-          <td>Plot</td>
-          <td>97852 52525</td>
-          <td>1200</td>
-          <td>02</td>
-          <td>Sold</td>
-          <td>00</td>
-          <td>____</td>
-        </tr>
-        <tr>
-          <td>PPD1125</td>
-          <td>____</td>
-          <td>Plot</td>
-          <td>97852 52525</td>
-          <td>1200</td>
-          <td>02</td>
-          <td>Sold</td>
-          <td>00</td>
-          <td>____</td>
-        </tr>
-        <tr>
-          <td>PPD1125</td>
-          <td>____</td>
-          <td>Plot</td>
-          <td>97852 52525</td>
-          <td>1200</td>
-          <td>02</td>
-          <td>Sold</td>
-          <td>00</td>
-          <td>____</td>
-        </tr>
+        {dataList.map((entry, idx) => {
+          return (
+            <tr key={idx} className={classNames({"added": entry.isAdded})}>
+              <td>{entry.id}</td>
+              <td>
+                <button>
+                  <SVGicon className={"data-table__image"} id={"image"} />
+                </button>
+              </td>
+              <td>{entry.propertyType}</td>
+              <td>{entry.contact}</td>
+              <td>{entry.area}</td>
+              <td>{entry.views}</td>
+              <td>
+                <div className="data-table__status-wrap">
+                {entry.status}
+                </div>
+                </td>
+              <td>{entry.date}</td>
+              <td>
+                <div className="data-table__action">
+                  <button>
+                    <SVGicon className={"data-table__watch"} id={"watch"} />
+                  </button>
+                  <button>
+                    <SVGicon className={"data-table__edit"} id={"edit"} />
+                  </button>
+                </div>
+              </td>
+            </tr>
+          )
+        })}
       </tbody>
     </table>
   );

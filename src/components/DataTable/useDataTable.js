@@ -1,7 +1,13 @@
-const DataTable = () => {
+import { useSelector } from 'react-redux';
+
+
+const useDataTable = () => {
+
+    const dataList = useSelector((state) => state.ppd.list);
+
     return {
-        
+        dataList
     };
 }
 
-export default DataTable;
+export default useDataTable;

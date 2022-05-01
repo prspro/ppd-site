@@ -12,6 +12,7 @@ const SearchBar = ({ className, placeholder }) => {
       method="POST"
       action="/"
       className={classNames("search", className, { focused: isFocused })}
+      onSubmit={(e) => e.preventDefault()}
     >
       <div className="search__inner">
         <input
@@ -27,7 +28,6 @@ const SearchBar = ({ className, placeholder }) => {
         <label className={classNames("search__label", { focused: isFocused })}>
           {placeholder}
         </label>
-        {/* <input  type="button" value="x" /> */}
         <button className="search__submit">
           <SVGicon className="search__icon" id="magnifier" />
         </button>
