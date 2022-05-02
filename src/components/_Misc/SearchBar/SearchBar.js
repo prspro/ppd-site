@@ -18,7 +18,7 @@ const SearchBar = ({ className, placeholder }) => {
         <input
           onFocus={handleFocus}
           onBlur={handleBlur}
-          onChange={(e) => {
+          onInput={(e) => {
             handleValueChange(e.target.value);
           }}
           className="search__input"

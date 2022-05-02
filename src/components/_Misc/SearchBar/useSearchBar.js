@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { updateFilter } from "../../../store/slices/ppdSlice";
 
 const useSearchBar = () => {
   const [isFocused, setIsFocused] = useState(false);
@@ -16,17 +18,20 @@ const useSearchBar = () => {
     }
   }
 
-
+  const dispatch = useDispatch();
 
   const handleValueChange = (inputText) => {
     setValue(inputText);
+    dispatch(updateFilter(
+      inputText
+    ));
   }
 
   return {
     isFocused,
     handleFocus,
     handleBlur,
-    handleValueChange
+    handleValueChange,
   };
 };
 

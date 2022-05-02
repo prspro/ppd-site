@@ -4,13 +4,16 @@ import "./summary.sass";
 import SummaryCard from "../SummaryCard/SummaryCard";
 
 const Summary = () => {
+
+  const { viewsCount, totalAdsCount } = useSummary();
+
   return (
     <ul className="summary">
       <li className="summary__item">
-        <SummaryCard title="Total  Ads Posted" number="06" icon="article" />
+        <SummaryCard title="Total  Ads Posted" number={totalAdsCount} icon="article" />
       </li>
       <li className="summary__item">
-        <SummaryCard title="Total Views" number="24" icon="eye2" />
+        <SummaryCard title="Total Views" number={viewsCount} icon="eye2" />
       </li>
       <li className="summary__item">
         <SummaryCard title="Interest Received" number="12" icon="heart-down" />

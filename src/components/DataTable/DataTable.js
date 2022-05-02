@@ -2,7 +2,7 @@ import React from "react";
 import useDataTable from "../DataTable/useDataTable";
 import "./datatable.sass";
 import SVGicon from "../_Misc/SVGicon/SVGicon";
-import classNames from "classnames";
+// import classNames from "classnames";
 
 const DataTable = () => {
   const { dataList } = useDataTable();
@@ -25,7 +25,7 @@ const DataTable = () => {
       <tbody>
         {dataList.map((entry, idx) => {
           return (
-            <tr key={idx} className={classNames({"added": entry.isAdded})}>
+            <tr key={idx} >
               <td>{entry.id}</td>
               <td>
                 <button>

@@ -1,12 +1,12 @@
 import { useDispatch } from "react-redux";
-import { add } from "../../store/slices/ppdSlice";
+import { addPPD } from "../../store/slices/ppdSlice";
 
 const useDataTable = () => {
   const dispatch = useDispatch();
 
   const addPPDitem = () => {
     dispatch(
-      add({
+      addPPD({
         id: "PPD1125",
         image: "",
         propertyType: "Plot",
@@ -15,7 +15,6 @@ const useDataTable = () => {
         views: 2,
         status: "sold",
         date: "",
-        isAdded: true,
       })
     );
   };

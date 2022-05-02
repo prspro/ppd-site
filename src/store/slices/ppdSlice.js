@@ -5,16 +5,19 @@ export const ppdSlice = createSlice({
   name: "ppd",
   initialState: {
     list: propertyList,
-    searchValue: "",
+    filterValue: "",
   },
   reducers: {
-    add: (state, action) => {
+    addPPD: (state, action) => {
       state.list.push(action.payload);
     },
+    updateFilter: (state, action) => {
+      state.filterValue = action.payload;
+    }
   },
 });
 
 
 export default ppdSlice.reducer;
 
-export const { add } = ppdSlice.actions;
+export const { addPPD, updateFilter } = ppdSlice.actions;
