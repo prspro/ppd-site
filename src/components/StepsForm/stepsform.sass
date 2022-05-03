@@ -1,0 +1,56 @@
+.steps-form
+    $rootParent: &
+    padding: 45px 60px
+    color: #7D7D7D
+    background-color: #fff
+    border-radius: 32px
+    & form
+        margin-bottom: 45px
+    &__list
+        display: flex
+        flex-wrap: wrap
+        margin: -20px
+        label, input, select
+            display: block
+            width: 100%
+        label
+            margin-bottom: 8px
+        input, select
+            background: none
+            border-radius: 8px
+            border: 1px solid #C3C3C3
+            box-sizing: border-box
+            padding: 18px 22px
+            transition: all .5s
+            outline: none
+            appearance: none
+            &:hover, &:focus
+                border: 1px solid #3485F7
+        select
+            position: relative
+            color: #7d7d7d
+    &__select-wrap
+        position: relative
+        &::after
+            content: ''
+            position: absolute
+            height: 10px
+            width: 10px
+            border-bottom: 3px solid #C4C4C4
+            border-left: 3px solid #C4C4C4
+            top: 50%
+            right: 25px
+            transform: translate(0, -50%) rotate(-45deg)
+    &__item
+        margin: 20px
+        width: calc( 50% - 40px )
+    &__buttons-bar
+        display: flex
+        justify-content: center
+        flex-wrap: wrap
+        margin: -10px
+    &__button
+        min-width: 187px
+        margin: 10px
+        &--orange
+            background-color: #FF7D0A
