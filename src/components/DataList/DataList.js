@@ -4,8 +4,8 @@ import DecoratedButton from "../_Misc/DecoratedButton/DecoratedButton";
 import SearchBar from "../_Misc/SearchBar/SearchBar";
 import DataTable from "../DataTable/DataTable";
 
-const DataList = () => {
-  const { addPPDitem } = useDataList();
+const DataList = ({ switchFormShown }) => {
+  const { addPPDitem } = useDataList(switchFormShown);
 
   return (
     <div className="data-list">

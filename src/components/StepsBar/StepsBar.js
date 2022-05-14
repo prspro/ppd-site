@@ -3,41 +3,38 @@ import "./stepsbar.sass";
 import DecoratedButton from "../_Misc/DecoratedButton/DecoratedButton";
 import classNames from "classnames";
 
-const StepsBar = ({ className }) => {
+const StepsBar = ({ className, formStage, setFormStage }) => {
+  const {
+    isButtonActive,
+    setAllowedFormStage,
+  } = useStepsBar(formStage, setFormStage);
+
+  const buttonsList = [
+    "Basic Info",
+    "Property Detail",
+    "General Info",
+    "Location Info",
+  ];
+
   return (
     <ul className={classNames("steps-bar", className)}>
-      <li className="steps-bar__item active">
-        <DecoratedButton className={"steps-bar__button"}>
-          <div className="steps-bar__step-circle">
-            <span>1</span>
-          </div>
-          <p>Basic Info</p>
-        </DecoratedButton>
-      </li>
-      <li className="steps-bar__item">
-        <DecoratedButton className={"steps-bar__button"}>
-          <div className="steps-bar__step-circle">
-            <span>2</span>
-          </div>
-          <p>Property Detail</p>
-        </DecoratedButton>
-      </li>
-      <li className="steps-bar__item">
-        <DecoratedButton className={"steps-bar__button"}>
-          <div className="steps-bar__step-circle">
-            <span>3</span>
-          </div>
-          <p>General Info</p>
-        </DecoratedButton>
-      </li>
-      <li className="steps-bar__item">
-        <DecoratedButton className={"steps-bar__button"}>
-          <div className="steps-bar__step-circle">
-            <span>4</span>
-          </div>
-          <p>Location Info</p>
-        </DecoratedButton>
-      </li>
+      {buttonsList.map((button, idx) => {
+        return (
+          <li
+            className={classNames("steps-bar__item", { active: isButtonActive(idx) })}
+          >
+            <DecoratedButton
+              className={"steps-bar__button"}
+              onClick={() => setAllowedFormStage(idx)}
+            >
+              <div className="steps-bar__step-circle">
+                <span>{idx + 1}</span>
+              </div>
+              <p>{button}</p>
+            </DecoratedButton>
+          </li>
+        );
+      })}
     </ul>
   );
 };

@@ -10,6 +10,7 @@ export const ppdSlice = createSlice({
   reducers: {
     addPPD: (state, action) => {
       state.list.push(action.payload);
+      // console.log(action.payload);
     },
     updateFilter: (state, action) => {
       state.filterValue = action.payload;

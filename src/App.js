@@ -5,10 +5,8 @@ import SidebarMenu from './components/SidebarMenu/SidebarMenu';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Header from './components/Header/Header';
 import Container from './components/_Misc/Container/Container';
-import Summary from './components/Summary/Summary';
-import DataList from './components/DataList/DataList';
-import StepsBar from './components/StepsBar/StepsBar';
-import StepsForm from "./components/StepsForm/StepsForm";
+//pages
+import PropertyPage from './PropertyPage/PropertyPage';
 
 function App() {
   return (
@@ -25,12 +23,7 @@ function App() {
               <Route
                 path="/"
                 element={
-                  <React.Fragment>
-                    <StepsBar />
-                    <StepsForm />
-                    <Summary />
-                    <DataList />
-                  </React.Fragment>
+                  <PropertyPage />
                 }
               />
               <Route

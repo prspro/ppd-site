@@ -33,7 +33,7 @@ const DataTable = () => {
                 </button>
               </td>
               <td>{entry.propertyType}</td>
-              <td>{entry.contact}</td>
+              <td>{entry.mobile}</td>
               <td>{entry.area}</td>
               <td>{entry.views}</td>
               <td>
