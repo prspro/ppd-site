@@ -9,19 +9,26 @@ const StepsForm = ({
   switchFormShown,
   formData,
   setFormData,
+  formStageData,
+  setFormStageData,
+  passedStage,
+  setPasedStage,
 }) => {
   const {
     initialValues,
     validationSchema,
     handleSubmit,
     handleCancel,
-    // formStage,
   } = useStepsForm(
     formStage,
     setFormStage,
     switchFormShown,
     formData,
-    setFormData
+    setFormData,
+    formStageData,
+    setFormStageData,
+    passedStage,
+    setPasedStage,
   );
 
   return (

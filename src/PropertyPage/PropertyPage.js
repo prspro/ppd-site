@@ -10,8 +10,12 @@ const PropertyPage = () => {
   const {
     formStage,
     setFormStage,
+    passedStage,
+    setPasedStage,
     formData,
     setFormData,
+    formStageData,
+    setFormStageData,
     isFormShown,
     switchFormShown,
   } = usePropertyPage();
@@ -19,13 +23,21 @@ const PropertyPage = () => {
   if (isFormShown) {
     return (
       <React.Fragment>
-        <StepsBar formStage={formStage} setFormStage={setFormStage} />
+        <StepsBar
+          formStage={formStage}
+          setFormStage={setFormStage}
+          passedStage={passedStage}
+        />
         <StepsForm
           formStage={formStage}
           setFormStage={setFormStage}
           switchFormShown={switchFormShown}
           formData={formData}
           setFormData={setFormData}
+          formStageData={formStageData}
+          setFormStageData={setFormStageData}
+          passedStage={passedStage}
+          setPasedStage={setPasedStage}
         />
       </React.Fragment>
     );

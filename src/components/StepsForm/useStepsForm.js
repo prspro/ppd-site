@@ -9,13 +9,12 @@ const useStepsForm = (
   setFormStage,
   switchFormShown,
   formData,
-  setFormData
+  setFormData,
+  formStageData,
+  setFormStageData,
+  passedStage,
+  setPasedStage
 ) => {
-  // const [formStage, setFormStage] = useState(0);
-  // const [formData, setFormData] = useState({});
-
-  console.log(formStage);
-
   const dispatch = useDispatch();
 
   const formScreenInitialValues = [
@@ -125,10 +124,34 @@ const useStepsForm = (
   const validationSchema = Yup.object().shape(
     formScreenValidationSchema[formStage]
   );
-  const initialValues = formScreenInitialValues[formStage];
+
+  const formValuesIniter = () => {
+    // console.log(formStageData[formStage]);
+    if (
+      !(
+        Object.keys(formStageData[formStage]).length === 0 &&
+        formStageData[formStage].constructor === Object
+      )
+    ) {
+      return formStageData[formStage];
+    } else {
+      return formScreenInitialValues[formStage];
+    }
+  };
+
+  // const initialValues = formScreenInitialValues[formStage];
+  const initialValues = formValuesIniter();
+  // const initialValues = formStageData[formStage] !== {} ?  formStageData[formStage] : formScreenInitialValues[formStage];
 
   const handleCancel = () => {
+    setPasedStage(0);
+    setFormStage(0);
     switchFormShown();
+    setFormStageData( (prev) => {
+      return prev.map((entry) => {
+        return {};
+      })
+    });
   };
 
   const handleSubmit = (values, { setSubmitting }) => {
@@ -142,14 +165,27 @@ const useStepsForm = (
           status: "unsold",
         })
       );
-      setFormStage(0);
-      switchFormShown();
+      handleCancel();
       setSubmitting(false);
     } else {
       setFormData((data) => {
         return { ...data, ...values };
       });
-      setFormStage((x) => x + 1);
+      setFormStageData((prev) => {
+        return prev.map((entry, idx) => {
+          if (idx === formStage) {
+            return values;
+          } else {
+            return entry;
+          }
+        });
+      });
+      if (formStage === passedStage) {
+        setPasedStage((x) => x + 1);
+        setFormStage((x) => x + 1);
+      } else {
+        setFormStage(passedStage);
+      }
     }
   };
 

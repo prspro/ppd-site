@@ -1,20 +1,24 @@
-// import React from 'react';
+import { React, useState } from "react";
 
-const useStepsBar = (formStage, setFormStage) => {
-  const isFirstActive = formStage === 0 ? true : false;
+const useStepsBar = (formStage, setFormStage, passedStage) => {
 
   const isButtonActive = (btnIndex) => {
     return btnIndex === formStage;
   };
 
+  const isStagePassed = (btnIndex) => {
+    return btnIndex < passedStage;
+  };
+
   const setAllowedFormStage = (btnIndex) => {
-    if (formStage > btnIndex) {
+    if (passedStage > btnIndex) {
       setFormStage(btnIndex);
     }
   };
 
   return {
     isButtonActive,
+    isStagePassed,
     setAllowedFormStage,
   };
 };
