@@ -5,7 +5,7 @@ import SVGicon from "../_Misc/SVGicon/SVGicon";
 // import classNames from "classnames";
 
 const DataTable = () => {
-  const { dataList } = useDataTable();
+  const { dataList, handleEdit, handleWatch } = useDataTable();
 
   return (
     <table className="data-table">
@@ -25,7 +25,7 @@ const DataTable = () => {
       <tbody>
         {dataList.map((entry, idx) => {
           return (
-            <tr key={idx} >
+            <tr key={idx}>
               <td>{entry.id}</td>
               <td>
                 <button>
@@ -37,23 +37,21 @@ const DataTable = () => {
               <td>{entry.area}</td>
               <td>{entry.views}</td>
               <td>
-                <div className="data-table__status-wrap">
-                {entry.status}
-                </div>
-                </td>
+                <div className="data-table__status-wrap">{entry.status}</div>
+              </td>
               <td>{entry.date}</td>
               <td>
                 <div className="data-table__action">
-                  <button>
+                  <button onClick={() => (handleWatch(entry.id))}>
                     <SVGicon className={"data-table__watch"} id={"watch"} />
                   </button>
-                  <button>
+                  <button onClick={handleEdit}>
                     <SVGicon className={"data-table__edit"} id={"edit"} />
                   </button>
                 </div>
               </td>
             </tr>
-          )
+          );
         })}
       </tbody>
     </table>

@@ -139,9 +139,7 @@ const useStepsForm = (
     }
   };
 
-  // const initialValues = formScreenInitialValues[formStage];
   const initialValues = formValuesIniter();
-  // const initialValues = formStageData[formStage] !== {} ?  formStageData[formStage] : formScreenInitialValues[formStage];
 
   const handleCancel = () => {
     setPasedStage(0);
