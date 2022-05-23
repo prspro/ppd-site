@@ -2,18 +2,24 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { incrementWatchCounter } from "../../store/slices/ppdSlice";
 
-const useDataTable = () => {
+const useDataTable = (
+  switchFormShown,
+  setEditinItemID,
+  setIsitemEditing
+) => {
   const filterValue = useSelector((state) => state.ppd.filterValue);
   const data = useSelector((state) => state.ppd.list);
 
   const dispatch = useDispatch();
 
-  const handleEdit = () => {
-    console.log("edit");
+  const handleEdit = (id) => {
+    switchFormShown();
+    setIsitemEditing(true);
+    setEditinItemID(id);
   };
 
-  const handleWatch = (idx) => {
-    dispatch(incrementWatchCounter(idx));
+  const handleWatch = (id) => {
+    dispatch(incrementWatchCounter(id));
   };
 
   const dataList = data.filter((entry) => {

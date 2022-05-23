@@ -4,7 +4,11 @@ import DecoratedButton from "../_Misc/DecoratedButton/DecoratedButton";
 import SearchBar from "../_Misc/SearchBar/SearchBar";
 import DataTable from "../DataTable/DataTable";
 
-const DataList = ({ switchFormShown }) => {
+const DataList = ({
+  switchFormShown,
+  setEditinItemID,
+  setIsitemEditing,
+}) => {
   const { addPPDitem } = useDataList(switchFormShown);
 
   return (
@@ -17,7 +21,11 @@ const DataList = ({ switchFormShown }) => {
         </DecoratedButton>
       </div>
       <div className="data-list__inner-wrap">
-        <DataTable />
+        <DataTable
+          switchFormShown={switchFormShown}
+          setEditinItemID={setEditinItemID}
+          setIsitemEditing={setIsitemEditing}
+        />
       </div>
     </div>
   );

@@ -11,6 +11,15 @@ export const ppdSlice = createSlice({
     addPPD: (state, action) => {
       state.list.push(action.payload);
     },
+    updatePPD: (state, action) => {
+      state.list = state.list.map(entry => {
+        if (action.payload.id === entry.id) {
+          return action.payload.data;
+        } else {
+          return entry;
+        }
+      });
+    },
     incrementWatchCounter: (state, action) => {
       state.list = state.list.map((entry) => {
         if (entry.id === action.payload) {
@@ -28,4 +37,4 @@ export const ppdSlice = createSlice({
 
 export default ppdSlice.reducer;
 
-export const { addPPD, updateFilter, incrementWatchCounter } = ppdSlice.actions;
+export const { addPPD, updatePPD, updateFilter, incrementWatchCounter } = ppdSlice.actions;

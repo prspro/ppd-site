@@ -18,6 +18,10 @@ const PropertyPage = () => {
     setFormStageData,
     isFormShown,
     switchFormShown,
+    isItemEditing,
+    setIsitemEditing,
+    editinItemID,
+    setEditinItemID,
   } = usePropertyPage();
 
   if (isFormShown) {
@@ -38,6 +42,9 @@ const PropertyPage = () => {
           setFormStageData={setFormStageData}
           passedStage={passedStage}
           setPasedStage={setPasedStage}
+          isItemEditing={isItemEditing}
+          editinItemID={editinItemID}
+          setIsitemEditing={setIsitemEditing}
         />
       </React.Fragment>
     );
@@ -45,7 +52,7 @@ const PropertyPage = () => {
     return (
       <React.Fragment>
         <Summary />
-        <DataList switchFormShown={switchFormShown} />
+        <DataList switchFormShown={switchFormShown} setEditinItemID={setEditinItemID} setIsitemEditing={setIsitemEditing}/>
       </React.Fragment>
     );
   }

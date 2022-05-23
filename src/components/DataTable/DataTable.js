@@ -4,8 +4,16 @@ import "./datatable.sass";
 import SVGicon from "../_Misc/SVGicon/SVGicon";
 // import classNames from "classnames";
 
-const DataTable = () => {
-  const { dataList, handleEdit, handleWatch } = useDataTable();
+const DataTable = ({
+  switchFormShown,
+  setEditinItemID,
+  setIsitemEditing,
+}) => {
+  const { dataList, handleEdit, handleWatch } = useDataTable(
+    switchFormShown,
+    setEditinItemID,
+    setIsitemEditing
+  );
 
   return (
     <table className="data-table">
@@ -26,7 +34,7 @@ const DataTable = () => {
         {dataList.map((entry, idx) => {
           return (
             <tr key={idx}>
-              <td>{entry.id}</td>
+              <td>PPD{entry.id}</td>
               <td>
                 <button>
                   <SVGicon className={"data-table__image"} id={"image"} />
@@ -42,10 +50,10 @@ const DataTable = () => {
               <td>{entry.date}</td>
               <td>
                 <div className="data-table__action">
-                  <button onClick={() => (handleWatch(entry.id))}>
+                  <button onClick={() => handleWatch(entry.id)}>
                     <SVGicon className={"data-table__watch"} id={"watch"} />
                   </button>
-                  <button onClick={handleEdit}>
+                  <button onClick={() => handleEdit(entry.id)}>
                     <SVGicon className={"data-table__edit"} id={"edit"} />
                   </button>
                 </div>

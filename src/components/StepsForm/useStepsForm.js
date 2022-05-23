@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
 import * as Yup from "yup";
-
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { addPPD } from "../../store/slices/ppdSlice";
+import { addPPD, updatePPD } from "../../store/slices/ppdSlice";
 
 const useStepsForm = (
   formStage,
@@ -13,53 +12,62 @@ const useStepsForm = (
   formStageData,
   setFormStageData,
   passedStage,
-  setPasedStage
+  setPasedStage,
+  isItemEditing,
+  editinItemID,
+  setIsitemEditing,
 ) => {
   const dispatch = useDispatch();
 
+  const data = useSelector((state) => state.ppd.list);
+  const lastItemID = parseInt(data[data.length - 1].id);
+  const editingItemData = data.find((entry) => entry.id === editinItemID);
+
   const formScreenInitialValues = [
     {
-      propertyType: "",
-      negotable: "",
-      price: "",
-      ownership: "",
-      propertAge: "",
-      propertApproved: "",
-      propertyDescription: "",
-      bankLoan: "",
+      propertyType: isItemEditing ? editingItemData.propertyType : "",
+      negotable: isItemEditing ? editingItemData.negotable : "",
+      price: isItemEditing ? editingItemData.price : "",
+      ownership: isItemEditing ? editingItemData.ownership : "",
+      propertAge: isItemEditing ? editingItemData.propertAge : "",
+      propertApproved: isItemEditing ? editingItemData.propertApproved : "",
+      propertyDescription: isItemEditing
+        ? editingItemData.propertyDescription
+        : "",
+      bankLoan: isItemEditing ? editingItemData.bankLoan : "",
     },
     {
-      ppdLength: "",
-      ppdBreath: "",
-      totalArea: "",
-      areaUnit: "",
-      numOfBHK: "",
-      numOfFloor: "",
-      attached: "",
-      westernToilet: "",
-      furnished: "",
-      carParking: "",
-      lift: "",
-      electricity: "",
-      facing: "",
+      ppdLength: isItemEditing ? editingItemData.ppdLength : "",
+      ppdBreath: isItemEditing ? editingItemData.ppdBreath : "",
+      totalArea: isItemEditing ? editingItemData.totalArea : "",
+      areaUnit: isItemEditing ? editingItemData.areaUnit : "",
+      numOfBHK: isItemEditing ? editingItemData.numOfBHK : "",
+      numOfFloor: isItemEditing ? editingItemData.numOfFloor : "",
+      attached: isItemEditing ? editingItemData.attached : "",
+      westernToilet: isItemEditing ? editingItemData.westernToilet : "",
+      furnished: isItemEditing ? editingItemData.furnished : "",
+      carParking: isItemEditing ? editingItemData.carParking : "",
+      lift: isItemEditing ? editingItemData.lift : "",
+      electricity: isItemEditing ? editingItemData.electricity : "",
+      facing: isItemEditing ? editingItemData.facing : "",
     },
     {
-      name: "",
-      mobile: "",
-      postedBy: "",
-      saleType: "",
-      featuredPackage: "",
-      ppdPackage: "",
+      name: isItemEditing ? editingItemData.name : "",
+      mobile: isItemEditing ? editingItemData.mobile : "",
+      postedBy: isItemEditing ? editingItemData.postedBy : "",
+      saleType: isItemEditing ? editingItemData.saleType : "",
+      featuredPackage: isItemEditing ? editingItemData.featuredPackage : "",
+      ppdPackage: isItemEditing ? editingItemData.ppdPackage : "",
     },
     {
-      email: "",
-      city: "",
-      area: "",
-      pincode: "",
-      address: "",
-      landmark: "",
-      latitude: "",
-      longitude: "",
+      email: isItemEditing ? editingItemData.email : "",
+      city: isItemEditing ? editingItemData.city : "",
+      area: isItemEditing ? editingItemData.area : "",
+      pincode: isItemEditing ? editingItemData.pincode : "",
+      address: isItemEditing ? editingItemData.address : "",
+      landmark: isItemEditing ? editingItemData.landmark : "",
+      latitude: isItemEditing ? editingItemData.latitude : "",
+      longitude: isItemEditing ? editingItemData.longitude : "",
     },
   ];
 
@@ -126,7 +134,6 @@ const useStepsForm = (
   );
 
   const formValuesIniter = () => {
-    // console.log(formStageData[formStage]);
     if (
       !(
         Object.keys(formStageData[formStage]).length === 0 &&
@@ -142,27 +149,41 @@ const useStepsForm = (
   const initialValues = formValuesIniter();
 
   const handleCancel = () => {
+    setIsitemEditing(false);
     setPasedStage(0);
     setFormStage(0);
     switchFormShown();
-    setFormStageData( (prev) => {
+    setFormStageData((prev) => {
       return prev.map((entry) => {
         return {};
-      })
+      });
     });
   };
 
   const handleSubmit = (values, { setSubmitting }) => {
     if (formStage === 3) {
-      dispatch(
-        addPPD({
-          ...formData,
-          ...values,
-          id: "PPD100500",
-          views: 0,
-          status: "unsold",
-        })
-      );
+      if (isItemEditing) {
+        dispatch(
+          updatePPD({
+            data: {
+              ...editingItemData,
+              ...formData,
+              ...values,
+            },
+            id: editinItemID,
+          })
+        );
+      } else {
+        dispatch(
+          addPPD({
+            ...formData,
+            ...values,
+            id: (lastItemID + 1).toString(),
+            views: 0,
+            status: "unsold",
+          })
+        );
+      }
       handleCancel();
       setSubmitting(false);
     } else {

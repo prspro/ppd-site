@@ -13,6 +13,9 @@ const StepsForm = ({
   setFormStageData,
   passedStage,
   setPasedStage,
+  isItemEditing,
+  editinItemID,
+  setIsitemEditing,
 }) => {
   const {
     initialValues,
@@ -29,6 +32,9 @@ const StepsForm = ({
     setFormStageData,
     passedStage,
     setPasedStage,
+    isItemEditing,
+    editinItemID,
+    setIsitemEditing,
   );
 
   return (
@@ -57,9 +63,9 @@ const StepsForm = ({
                         <option defaultValue hidden>
                           Select Property Type
                         </option>
-                        <option value="Type 1">Type 1</option>
-                        <option value="Type 2">Type 2</option>
-                        <option value="Type 3">Type 3</option>
+                        <option value="Plot">Plot</option>
+                        <option value="House">House</option>
+                        <option value="Flat">Flat</option>
                       </Field>
                     </div>
                   </li>
@@ -700,9 +706,12 @@ const StepsForm = ({
                         <option defaultValue hidden>
                           Area
                         </option>
-                        <option value="area 1">area 1</option>
-                        <option value="area 2">area 2</option>
-                        <option value="area 3">area 3</option>
+                        <option value="800">800</option>
+                        <option value="1200">1200</option>
+                        <option value="1250">1250</option>
+                        <option value="1800">1800</option>
+                        <option value="2000">2000</option>
+                        <option value="2500">2500</option>
                       </Field>
                     </div>
                   </li>
