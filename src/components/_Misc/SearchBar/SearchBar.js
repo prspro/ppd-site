@@ -4,8 +4,10 @@ import "./searchbar.sass";
 import SVGicon from "../SVGicon/SVGicon";
 
 const SearchBar = ({ className, placeholder }) => {
-  const { isFocused, handleFocus, handleBlur, handleValueChange } =
+  const { isFocused, isPrefocused, value, handleFocus, handleBlur, handleValueChange } =
     useSearchBar();
+
+    
 
   return (
     <form
@@ -21,11 +23,12 @@ const SearchBar = ({ className, placeholder }) => {
           onInput={(e) => {
             handleValueChange(e.target.value);
           }}
+          value={value}
           className="search__input"
           type="search"
           placeholder=""
         />
-        <label className={classNames("search__label", { focused: isFocused })}>
+        <label className={classNames("search__label", { focused: isFocused, prefocused: isPrefocused })}>
           {placeholder}
         </label>
         <button className="search__submit">
